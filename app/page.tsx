@@ -1,65 +1,105 @@
-import Image from "next/image";
+import Link from 'next/link'
 
-export default function Home() {
+export default function ProductPage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-white flex flex-col">
+      {/* Header */}
+      <header className="px-4 py-3 flex items-center gap-3 border-b border-surface">
+        <div className="flex items-center gap-1">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M13.5 2L4 14h7.5L10 22l10-12h-7.5L13.5 2z"
+              fill="#FF2D55"
+            />
+          </svg>
+          <span className="text-near-black font-extrabold text-xl tracking-tight">zepto</span>
+        </div>
+        <div className="ml-auto flex items-center gap-1">
+          <div className="w-2 h-2 bg-success rounded-full" />
+          <span className="text-xs text-muted font-semibold">10 min delivery</span>
+        </div>
+      </header>
+
+      {/* Product */}
+      <div className="flex-1 px-4 pt-6 pb-36">
+        {/* Product image */}
+        <div className="w-full aspect-square bg-surface rounded-2xl mb-6 flex items-center justify-center">
+          <div className="text-center">
+            <div className="text-[96px] leading-none mb-2">🍫</div>
+            <p className="text-muted text-sm font-semibold">Magnum Almond</p>
+          </div>
+        </div>
+
+        {/* Brand + name */}
+        <div className="mb-4">
+          <p className="text-muted text-xs font-semibold uppercase tracking-widest mb-1">
+            Magnum · 80ml
+          </p>
+          <h1 className="text-near-black font-extrabold text-2xl leading-tight mb-3">
+            Magnum Almond Ice Cream Bar
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="bg-near-black text-white text-sm font-bold px-3 py-1 rounded-full">
+              ₹115
+            </span>
+            <span className="text-muted text-sm line-through">₹130</span>
+            <span className="bg-success/10 text-success text-xs font-bold px-3 py-1 rounded-full">
+              11% off
+            </span>
+          </div>
+        </div>
+
+        {/* Delivery promise */}
+        <div className="bg-purple/5 border border-purple/20 rounded-xl px-4 py-3 mb-6 flex items-center gap-3">
+          <span className="text-2xl">⚡</span>
+          <div>
+            <p className="text-purple font-bold text-sm">10 minute delivery</p>
+            <p className="text-muted text-xs">Order now · arrives before it melts</p>
+          </div>
+        </div>
+
+        {/* Description */}
+        <div className="mb-6">
+          <h2 className="font-bold text-near-black mb-2 text-sm">About this product</h2>
+          <p className="text-muted text-sm leading-relaxed">
+            Premium vanilla ice cream on a stick, smothered in Belgian chocolate and
+            covered in roasted almonds. The bar that needs no introduction.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Info chips */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {['80g net weight', 'Stored at −18°C', 'No artificial flavours'].map((tag) => (
+            <span key={tag} className="bg-surface text-muted text-xs px-3 py-1.5 rounded-full">
+              {tag}
+            </span>
+          ))}
         </div>
-      </main>
+
+        {/* Arcade teaser */}
+        <div className="bg-dark rounded-2xl px-4 py-4 flex items-center gap-3">
+          <div>
+            <p className="text-pink font-extrabold text-sm">🎮 Khelo Khao unlocks after order</p>
+            <p className="text-muted text-xs mt-0.5">
+              Play 3 games during your wait. Earn up to 20% off your next order.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Sticky CTA */}
+      <div className="fixed bottom-0 left-0 right-0 max-w-[430px] mx-auto px-4 py-4 bg-white border-t border-surface">
+        <Link
+          href="/arcade"
+          className="block w-full bg-pink text-white font-extrabold text-lg py-4 rounded-2xl text-center"
+          style={{ boxShadow: '0 0 24px rgba(255,45,85,0.35)' }}
+        >
+          Order Now — ₹115
+        </Link>
+        <p className="text-center text-muted text-xs mt-2">
+          Unlocks <span className="text-pink font-bold">Khelo Khao</span> · earn up to 20% off
+        </p>
+      </div>
     </div>
-  );
+  )
 }
