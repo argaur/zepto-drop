@@ -26,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="min-h-screen max-w-[430px] mx-auto relative overflow-hidden">
           {children}
         </div>
+        <script src="/analytics.js" defer />
       </body>
     </html>
   )
